@@ -9,7 +9,11 @@ Choose your difficulty level and try and guess the word before you run out of li
 
 
 ## Instructions
+
 (In windows powershell terminal)
+
 .\venv\Scripts\Activate
+
 python hangman.py
+
 Enjoy!
