@@ -69,4 +69,4 @@ if __name__ == '__main__':
   main()
 
 
-  # show guessed letters and don't take it as a mistake.
+  # Add function to reject/not punish for repeated guesses?
