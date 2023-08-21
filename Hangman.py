@@ -38,25 +38,31 @@ class Hangman:
             display_word += '_'
     print(display_word)
     print("")
-    print('Incorrect guesses:', self.mistakes_list)
+    incorrect_guesses = ', '.join(self.mistakes_list)
+    print('Incorrect guesses:', incorrect_guesses)
     print('Lives remaining:', (6 - self.mistakes))
     print("")
 
 
 def main():
   print ('Welcome to Hangman!')
-  print ('Enter the difficulty level between 1 (easiest) and 10 (hardest): ', end='')
-  difficulty = int(input())
-  if difficulty < 1 or difficulty > 10:
-    print('Invalid difficulty level. Please enter a number between 1 and 10.')
-    return
+  while True:
+      try:
+        difficulty = int(input('Enter the difficulty level between 1 (easiest) and 10 (hardest): '))
+        if 1 <= difficulty <= 10:
+          break
+        else:
+            print('Invalid difficulty level. Please enter a number between 1 and 10.')
+      except ValueError:
+       print('Invalid input. Please enter a valid number.')  
+
   words_list = [word.lower() for word in words.words() if difficulty - 1 <= len(word) <= difficulty + 1]
   word = random.choice(words_list).lower()
   hangman = Hangman(word)
 
   while not hangman.is_game_over():
     print('Guess a letter: ', end='')
-    letter = input()
+    letter = input().lower()
     hangman.guess_letter(letter)
     hangman.print_hangman(letter)
 
